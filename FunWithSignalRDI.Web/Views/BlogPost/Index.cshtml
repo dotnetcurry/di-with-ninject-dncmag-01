@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FunWithSignalR.Domain.Model.BlogPost>
+<head>
+    <meta charset="utf-8" />
+    <title>ASP.NET Web API</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
+    
+</head>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>
+                   Dependeny Injection with ASP.NET</h1>
+            </hgroup>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        @{
+            ViewBag.Title = "Dependency Injection with Ninject";
+        }
+        <h2>
+            Existing Posts</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        @foreach (var item in Model)
+        {
+            <div class="post-index-item">
+                <div class="post-index-title">
+                    <strong>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </strong>
+                </div>
+                <div class="post-index-content">
+                    @Html.DisplayFor(modelItem => item.Post)
+                </div>
+                <div class="post-index-footer">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @*@Html.ActionLink("Review", "Review", new { id = item.Id }) |*@
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </div>
+            </div>            
+        }
+    </section>
+</div>
